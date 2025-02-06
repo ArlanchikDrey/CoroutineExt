@@ -1,4 +1,4 @@
-package net.arlantech.coroutineext
+package io.github.arlanchikdrey
 
 import kotlin.coroutines.cancellation.CancellationException
 

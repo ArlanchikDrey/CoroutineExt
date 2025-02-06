@@ -21,8 +21,8 @@ This extensions pack addresses these challenges by providing:
 
 **1. Using `suspendRunCatching` for error handling:**
 ```kotlin
+import io.github.arlanchikdrey.suspendRunCatching
 import kotlinx.coroutines.*
-import net.arlantech.coroutineext.suspendRunCatching
 
 suspend fun fetchData(): Result<String> { 
     return suspendRunCatching { 
@@ -43,8 +43,8 @@ fun main() {
 
 **2. Using `awaitResult` with a `Deferred`:**
 ```kotlin
+import io.github.arlanchikdrey.awaitResult
 import kotlinx.coroutines.*
-import net.arlantech.coroutineext.awaitResult
 
 fun main() {
     runBlocking {
