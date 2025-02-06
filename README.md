@@ -22,31 +22,40 @@ This extensions pack addresses these challenges by providing:
 **1. Using `suspendRunCatching` for error handling:**
 ```kotlin
 import kotlinx.coroutines.*
+import net.arlantech.coroutineext.suspendRunCatching
+
 suspend fun fetchData(): Result<String> { 
     return suspendRunCatching { 
         delay(500) 
         throw RuntimeException("Failed to fetch data") 
     } 
 }
-fun main() = runBlocking {
-    val result = fetchData() 
-    result
-        .onSuccess { data -> println("Data: $data") }
-        .onFailure { exception -> println("Error: ${exception.message}") } 
+
+fun main() {
+    runBlocking {
+        val result = fetchData()
+        result
+            .onSuccess { data -> println("Data: $data") }
+            .onFailure { exception -> println("Error: ${exception.message}") }
+    }
 }
 ```
 
 **2. Using `awaitResult` with a `Deferred`:**
 ```kotlin
-import kotlinx.coroutines.* 
-fun main() = runBlocking {
-    val deferred: Deferred<String> = async {
-        delay(500)
-        "Data fetched successfully"
+import kotlinx.coroutines.*
+import net.arlantech.coroutineext.awaitResult
+
+fun main() {
+    runBlocking {
+        val deferred: Deferred<String> = async {
+            delay(500)
+            "Data fetched successfully"
+        }
+        val result = deferred.awaitResult()
+        result
+            .onSuccess { data -> println("Data: $data") }
+            .onFailure { exception -> println("Error: ${exception.message}") }
     }
-    val result = deferred.awaitResult()
-    result
-        .onSuccess { data -> println("Data: $data") }
-        .onFailure { exception -> println("Error: ${exception.message}") }
 }
 ```

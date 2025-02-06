@@ -31,6 +31,11 @@ publishing {
             pom {
                 name.set("CoroutineExt")
                 description.set(project.description)
+                url.set("https://github.com/ArlanchikDrey/CoroutineExt")
+
+                issueManagement {
+                    url.set("https://github.com/ArlanchikDrey/CoroutineExt/issues")
+                }
 
                 licenses {
                     license {
