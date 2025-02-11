@@ -3,7 +3,7 @@
 ## Install
 
 ```kotlin
-implementation("net.arlantech:coroutineext:$version")
+implementation("io.github.arlanchikdrey:coroutineext:$version")
 ```
 
 ## Why is it necessary to use these extensions?
